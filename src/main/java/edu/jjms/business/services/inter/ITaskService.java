@@ -10,7 +10,7 @@ import java.util.List;
 public interface ITaskService {
     List<TaskDto> findAll();
     List<TaskDto> findAllTaskByState(boolean isCompleted);
-    void create(CreateTaskDto createTaskDto);
-    void update(UpdateTaskDto updateTaskDto);
-    void delete(DeleteTaskDto deleteTaskDto);
+    TaskDto create(CreateTaskDto createTaskDto);
+    TaskDto update(UpdateTaskDto updateTaskDto);
+    Integer delete(DeleteTaskDto deleteTaskDto);
 }

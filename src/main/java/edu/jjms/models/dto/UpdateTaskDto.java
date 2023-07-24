@@ -14,5 +14,14 @@ public class UpdateTaskDto {
     private String description;
     private Date startDate;
     private Date endDate;
-    private Boolean completed;
+    private Boolean isCompleted;
+
+
+    public UpdateTaskDto(TaskDto taskDto) {
+        this.id = taskDto.getId();
+        this.description = taskDto.getDescription();
+        this.startDate = taskDto.getStartDate();
+        this.endDate = taskDto.getEndDate();
+        this.isCompleted = taskDto.getIsCompleted();
+    }
 }

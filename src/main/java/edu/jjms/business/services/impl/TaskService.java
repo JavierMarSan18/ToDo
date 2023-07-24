@@ -33,17 +33,17 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public void create(CreateTaskDto createTaskDto) {
-        taskRepository.create(taskMapper.toEntity(createTaskDto));
+    public TaskDto create(CreateTaskDto createTaskDto) {
+        return taskMapper.toDto(taskRepository.create(taskMapper.toEntity(createTaskDto)));
     }
 
     @Override
-    public void update(UpdateTaskDto updateTaskDto) {
-        taskRepository.update(taskMapper.toEntity(updateTaskDto));
+    public TaskDto update(UpdateTaskDto updateTaskDto) {
+        return taskMapper.toDto(taskRepository.update(taskMapper.toEntity(updateTaskDto)));
     }
 
     @Override
-    public void delete(DeleteTaskDto deleteTaskDto) {
-        taskRepository.delete(taskMapper.toEntity(deleteTaskDto));
+    public Integer delete(DeleteTaskDto deleteTaskDto) {
+        return taskRepository.delete(taskMapper.toEntity(deleteTaskDto));
     }
 }

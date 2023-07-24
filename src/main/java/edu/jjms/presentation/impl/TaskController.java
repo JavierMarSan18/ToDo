@@ -30,17 +30,17 @@ public class TaskController implements ITaskController {
     }
 
     @Override
-    public void create(CreateTaskDto createTaskDto) {
-        taskService.create(createTaskDto);
+    public TaskDto create(CreateTaskDto createTaskDto) {
+        return taskService.create(createTaskDto);
     }
 
     @Override
-    public void update(UpdateTaskDto updateTaskDto) {
-        taskService.update(updateTaskDto);
+    public TaskDto update(UpdateTaskDto updateTaskDto) {
+        return taskService.update(updateTaskDto);
     }
 
     @Override
-    public void delete(DeleteTaskDto deleteTaskDto) {
-        taskService.delete(deleteTaskDto);
+    public Integer delete(DeleteTaskDto deleteTaskDto) {
+        return taskService.delete(deleteTaskDto);
     }
 }

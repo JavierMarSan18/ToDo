@@ -10,7 +10,7 @@ import java.util.List;
 public interface ITaskRepository {
     List<Task> findAll();
     List<Task> findAllTaskByState(boolean isCompleted);
-    void create(Task task);
-    void update(Task task);
-    void delete(Task task);
+    Task create(Task task);
+    Task update(Task task);
+    Integer delete(Task task);
 }

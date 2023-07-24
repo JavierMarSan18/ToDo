@@ -9,4 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class DeleteTaskDto {
     private Integer id;
+
+    public DeleteTaskDto(TaskDto taskDto) {
+        this.id = taskDto.getId();
+    }
 }
