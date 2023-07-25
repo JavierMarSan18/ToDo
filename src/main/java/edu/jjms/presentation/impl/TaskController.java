@@ -6,11 +6,10 @@ import edu.jjms.models.dto.DeleteTaskDto;
 import edu.jjms.models.dto.TaskDto;
 import edu.jjms.models.dto.UpdateTaskDto;
 import edu.jjms.presentation.inter.ITaskController;
-import lombok.extern.slf4j.Slf4j;
 
+import jakarta.validation.Valid;
 import java.util.List;
 
-@Slf4j
 public class TaskController implements ITaskController {
 
     private final ITaskService taskService;
@@ -30,17 +29,17 @@ public class TaskController implements ITaskController {
     }
 
     @Override
-    public TaskDto create(CreateTaskDto createTaskDto) {
+    public TaskDto create(@Valid CreateTaskDto createTaskDto) {
         return taskService.create(createTaskDto);
     }
 
     @Override
-    public TaskDto update(UpdateTaskDto updateTaskDto) {
+    public TaskDto update(@Valid UpdateTaskDto updateTaskDto) {
         return taskService.update(updateTaskDto);
     }
 
     @Override
-    public Integer delete(DeleteTaskDto deleteTaskDto) {
+    public Integer delete(@Valid DeleteTaskDto deleteTaskDto) {
         return taskService.delete(deleteTaskDto);
     }
 }
