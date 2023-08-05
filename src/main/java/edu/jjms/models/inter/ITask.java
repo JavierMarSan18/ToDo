@@ -1,4 +1,4 @@
 package edu.jjms.models.inter;
 
-public interface IDto {
+public interface ITask {
 }

@@ -1,15 +1,12 @@
 package edu.jjms.business.services.inter;
 
-import edu.jjms.models.dto.CreateTaskDto;
-import edu.jjms.models.dto.DeleteTaskDto;
-import edu.jjms.models.dto.TaskDto;
-import edu.jjms.models.dto.UpdateTaskDto;
+import edu.jjms.models.dto.*;
 
 import java.util.List;
 
 public interface ITaskService {
     List<TaskDto> findAll();
-    List<TaskDto> findAllTaskByState(boolean isCompleted);
+    List<TaskDto> findAllTaskByState(StateTaskDto stateTaskDto);
     TaskDto create(CreateTaskDto createTaskDto);
     TaskDto update(UpdateTaskDto updateTaskDto);
     Integer delete(DeleteTaskDto deleteTaskDto);

@@ -2,10 +2,7 @@ package edu.jjms.business.services.impl;
 
 import edu.jjms.business.services.inter.ITaskService;
 import edu.jjms.mappers.inter.ITaskMapper;
-import edu.jjms.models.dto.CreateTaskDto;
-import edu.jjms.models.dto.DeleteTaskDto;
-import edu.jjms.models.dto.TaskDto;
-import edu.jjms.models.dto.UpdateTaskDto;
+import edu.jjms.models.dto.*;
 import edu.jjms.persistence.repositories.inter.ITaskRepository;
 
 import java.util.List;
@@ -27,8 +24,8 @@ public class TaskService implements ITaskService {
     }
 
     @Override
-    public List<TaskDto> findAllTaskByState(boolean isCompleted) {
-        return taskRepository.findAllTaskByState(isCompleted)
+    public List<TaskDto> findAllTaskByState(StateTaskDto stateTaskDto) {
+        return taskRepository.findAllTaskByState(stateTaskDto.getIsCompleted())
                                 .stream().map(taskMapper::toDto).toList();
     }
 

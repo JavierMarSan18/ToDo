@@ -1,16 +1,13 @@
 package edu.jjms.presentation.inter;
-
-import edu.jjms.models.dto.CreateTaskDto;
-import edu.jjms.models.dto.DeleteTaskDto;
-import edu.jjms.models.dto.TaskDto;
-import edu.jjms.models.dto.UpdateTaskDto;
+import edu.jjms.models.dto.*;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public interface ITaskController {
-    List<TaskDto> findAll();
-    List<TaskDto> findAllTaskByState(boolean isCompleted);
-    TaskDto create(CreateTaskDto createTaskDto);
-    TaskDto update(UpdateTaskDto updateTaskDto);
-    Integer delete(DeleteTaskDto deleteTaskDto);
+    CompletableFuture<List<TaskDto>> findAll();
+    CompletableFuture<List<TaskDto>> findAllTaskByState(StateTaskDto stateTaskDto);
+    CompletableFuture<TaskDto> create(CreateTaskDto createTaskDto);
+    CompletableFuture<TaskDto> update(UpdateTaskDto updateTaskDto);
+    CompletableFuture<Integer> delete(DeleteTaskDto deleteTaskDto);
 }

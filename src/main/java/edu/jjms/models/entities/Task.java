@@ -25,4 +25,15 @@ public class Task {
         this.endDate = endDate;
         this.isCompleted = isCompleted;
     }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", isCompleted=" + isCompleted +
+                '}';
+    }
 }

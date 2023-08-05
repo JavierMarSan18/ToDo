@@ -18,30 +18,13 @@ public class TaskRepository implements ITaskRepository {
     public TaskRepository(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
-
-//    @Override
-//    public Task findById(Integer id) {
-//        Task foundTask = new Task();
-//        try {
-//            String jpql = "SELECT t FROM Task t WHERE id =: id";
-//            TypedQuery<Task> query = entityManager.createQuery(jpql, Task.class);
-//            query.setParameter("id", id);
-//            entityManager.getTransaction().begin();
-//            foundTask = query.getSingleResult();
-//            entityManager.getTransaction().commit();
-//        }catch (Exception e){
-//            entityManager.getTransaction().rollback();
-//            e.printStackTrace();
-//        }
-//        return foundTask;
-//    }
-
     @Override
     public List<Task> findAll() {
         List<Task> tasks = new ArrayList<>();
         try{
             String jpql = "SELECT t FROM Task t";
             entityManager.getTransaction().begin();
+            entityManager.clear();
             tasks = entityManager.createQuery(jpql, Task.class).getResultList();
             entityManager.getTransaction().commit();
         }catch (Exception e){
@@ -58,7 +41,6 @@ public class TaskRepository implements ITaskRepository {
             String jpql = "SELECT t FROM Task t WHERE t.isCompleted =: isCompleted";
             TypedQuery<Task> query = entityManager.createQuery(jpql, Task.class);
             query.setParameter("isCompleted", isCompleted);
-
             entityManager.getTransaction().begin();
             tasks = query.getResultList();
             entityManager.getTransaction().commit();

@@ -1,14 +1,11 @@
 package edu.jjms.presentation.impl;
 
 import edu.jjms.business.services.inter.ITaskService;
-import edu.jjms.models.dto.CreateTaskDto;
-import edu.jjms.models.dto.DeleteTaskDto;
-import edu.jjms.models.dto.TaskDto;
-import edu.jjms.models.dto.UpdateTaskDto;
+import edu.jjms.models.dto.*;
 import edu.jjms.presentation.inter.ITaskController;
 
-import jakarta.validation.Valid;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class TaskController implements ITaskController {
 
@@ -18,28 +15,30 @@ public class TaskController implements ITaskController {
         this.taskService = taskService;
     }
 
+
     @Override
-    public List<TaskDto> findAll() {
-        return taskService.findAll();
+    public CompletableFuture<List<TaskDto>> findAll() {
+        return CompletableFuture.supplyAsync(taskService::findAll);
     }
 
     @Override
-    public List<TaskDto> findAllTaskByState(boolean isCompleted) {
-        return taskService.findAllTaskByState(isCompleted);
+    public CompletableFuture<List<TaskDto>> findAllTaskByState(StateTaskDto stateTaskDto) {
+        return CompletableFuture.supplyAsync(() -> taskService.findAllTaskByState(stateTaskDto));
+
     }
 
     @Override
-    public TaskDto create(@Valid CreateTaskDto createTaskDto) {
-        return taskService.create(createTaskDto);
+    public CompletableFuture<TaskDto> create(CreateTaskDto createTaskDto) {
+        return CompletableFuture.supplyAsync(() -> taskService.create(createTaskDto));
     }
 
     @Override
-    public TaskDto update(@Valid UpdateTaskDto updateTaskDto) {
-        return taskService.update(updateTaskDto);
+    public CompletableFuture<TaskDto> update(UpdateTaskDto updateTaskDto) {
+        return CompletableFuture.supplyAsync(() -> taskService.update(updateTaskDto));
     }
 
     @Override
-    public Integer delete(@Valid DeleteTaskDto deleteTaskDto) {
-        return taskService.delete(deleteTaskDto);
+    public CompletableFuture<Integer> delete(DeleteTaskDto deleteTaskDto) {
+        return CompletableFuture.supplyAsync(() -> taskService.delete(deleteTaskDto));
     }
 }

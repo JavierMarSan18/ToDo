@@ -14,4 +14,15 @@ public class TaskDto {
     private Date startDate;
     private Date endDate;
     private Boolean isCompleted;
+
+    @Override
+    public String toString() {
+        String state = "Completed";
+        if (!isCompleted){
+            state = "Uncompleted";
+        }
+        return  "Id: " + id +
+                "\n Description: " + description +
+                "\n State: " + state;
+    }
 }
